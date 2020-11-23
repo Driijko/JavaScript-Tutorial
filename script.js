@@ -4,6 +4,7 @@ function setup() {
     noLoop();
 }
 
+const info = new Info();
 
 function draw() {
 
