@@ -14,5 +14,4 @@ const info = new Info();
 function draw() {
 
 
-
 }

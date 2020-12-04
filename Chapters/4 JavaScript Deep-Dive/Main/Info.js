@@ -6,6 +6,18 @@ class Info {
         this.leftMargin = 30;
     }
 
+    mainType(data) {
+        if (typeof(data) === "function") {
+            return "Function";
+        }
+        else if (typeof(data) === "object" && data !== null) {
+            return "DataStructure";
+        }
+        else {
+            return "Primitive";
+        }
+    }
+
     type(data) {
         if (typeof(data) === "number") {
             return "Number";
@@ -159,6 +171,8 @@ class Info {
         }
 
         array.forEach((obj, index) => {
+            noStroke();
+            fill("lightGreen");
             text(String(index), hOffset + 30, this.linePos + 10);
             this.display(obj, hOffset + 120)
         })
@@ -172,6 +186,8 @@ class Info {
             width - hOffset, 
             this.linePos - startLinePos - 30
         );
+
+        this.linePos += 20;
     }
 
     displayNumber(num, hOffset) {
