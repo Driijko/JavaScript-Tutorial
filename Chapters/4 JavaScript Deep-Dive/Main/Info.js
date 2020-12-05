@@ -140,6 +140,13 @@ class Info {
     tag(tag, data, hOffset=this.leftMargin) {
         this.fontSettings();
 
+        if (data instanceof Map) {
+            data = Object.fromEntries(data.entries());
+        }
+        else if (data instanceof Set) {
+            data = Array.from(data);
+        }
+
         if (
             data instanceof Array 
             && (data[0] instanceof Array) === false

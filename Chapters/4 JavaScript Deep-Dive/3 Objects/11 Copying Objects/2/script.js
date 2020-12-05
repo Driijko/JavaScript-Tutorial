@@ -13,9 +13,7 @@ const info = new Info();
 
 function draw() {
 
-    // Copying an Object Part 2 ////////////////////
-
-    // Copying by reference /////////////////
+    // Copying an Object Part 3 ////////////////////
 
     const rec = {
         moveDown() {
@@ -54,7 +52,6 @@ function draw() {
         rec1.pos.y
     )
 
-    // Solution: Recursive Deep-Cloning
     function deepClone(ds) {
 
         if (info.type(ds) === "Array") {
@@ -76,11 +73,13 @@ function draw() {
             // Object.setPrototypeOf(clone, Object.getPrototypeOf(ds));
 
             for (const key in ds) {
-                if (info.mainType(ds[key]) === "DataStructure") {
-                    clone[key] = deepClone(ds[key]);
-                }
-                else {
-                    clone[key] = ds[key];
+                if (ds.hasOwnProperty([key])) {
+                    if (info.mainType(ds[key]) === "DataStructure") {
+                        clone[key] = deepClone(ds[key]);
+                    }
+                    else {
+                        clone[key] = ds[key];
+                    }
                 }
             }
             return clone;
